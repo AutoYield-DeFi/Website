@@ -35,11 +35,6 @@ export default function BlogPost() {
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={`${post.title} - AutoYield Blog`} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={`/blog/${post.slug}.webp`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${post.title} - AutoYield Blog`} />
-        <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:image" content={`/blog/${post.slug}.webp`} />
       </Helmet>
 
       <article className="max-w-[44rem] mx-auto px-4 py-24">
@@ -61,7 +56,7 @@ export default function BlogPost() {
           </motion.h1>
 
           <motion.div 
-            className="text-muted-foreground mb-8"
+            className="text-muted-foreground mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -74,26 +69,19 @@ export default function BlogPost() {
           </motion.div>
         </header>
 
-        <motion.div
-          className="relative w-full aspect-[2/1] rounded-lg overflow-hidden mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <img 
-            src={`/blog/${post.slug}.webp`}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
         <motion.div 
           className="prose prose-lg prose-invert max-w-none"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div 
+            className="leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mt-12 [&>h2]:mb-4 
+                       [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-8 [&>h3]:mb-3
+                       [&>p]:mb-6 [&>p]:leading-7
+                       [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li]:mb-2"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </motion.div>
       </article>
     </div>

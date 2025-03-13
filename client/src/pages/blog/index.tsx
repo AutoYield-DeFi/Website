@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet";
@@ -13,7 +12,6 @@ export default function Blog() {
         <meta name="description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
         <meta property="og:title" content="AutoYield Blog - DeFi Liquidity Management Insights" />
         <meta property="og:description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
-        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <div className="container mx-auto px-4 py-24">
@@ -30,44 +28,33 @@ export default function Blog() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="max-w-2xl mx-auto space-y-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {BLOG_POSTS.map((post, index) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <motion.div
+              <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="block p-6 rounded-lg hover:bg-accent/5 transition-colors"
               >
-                <Card className="overflow-hidden h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl bg-card border border-border">
-                  <div className="aspect-[16/9] relative overflow-hidden">
-                    <img 
-                      src={`/blog/${post.slug}.webp`}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                      <time dateTime={post.date}>
-                        {format(new Date(post.date), 'MMMM d, yyyy')}
-                      </time>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <h2 className="text-xl font-semibold mb-3 line-clamp-2 hover:text-primary transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="text-muted-foreground line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                <div className="mb-2 text-sm text-muted-foreground">
+                  <time dateTime={post.date}>
+                    {format(new Date(post.date), 'MMMM d, yyyy')}
+                  </time>
+                  <span className="mx-2">•</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h2 className="text-2xl font-bold mb-3 leading-tight text-foreground hover:text-primary transition-colors">
+                  {post.title}
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {post.excerpt}
+                </p>
+              </motion.article>
             </Link>
           ))}
         </motion.div>
