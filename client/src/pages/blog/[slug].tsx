@@ -36,11 +36,14 @@ export default function BlogPost() {
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={`${post.title} - AutoYield Blog`} />
         <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.image} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${post.title} - AutoYield Blog`} />
         <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={post.image} />
       </Helmet>
 
-      <div className="pt-24 pb-16">
+      <article className="pt-24 pb-16">
         <div className="container mx-auto px-4">
           <motion.div 
             className="max-w-3xl mx-auto"
@@ -55,26 +58,28 @@ export default function BlogPost() {
               </div>
             </Link>
 
-            <Card>
-              <CardContent className="pt-6">
-                <div className="prose prose-invert max-w-none">
-                  <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-8">
-                    <div>
-                      {format(new Date(post.date), 'MMMM d, yyyy')} • {post.readTime}
-                    </div>
-                    <div>
-                      By {post.author}
-                    </div>
-                  </div>
-                  
-                  <div dangerouslySetInnerHTML={{ __html: post.content || post.excerpt }} />
-                </div>
-              </CardContent>
-            </Card>
+            <div className="aspect-[2/1] overflow-hidden rounded-lg mb-8">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="prose prose-lg prose-invert max-w-none">
+              <h1 className="text-4xl font-bold mb-4 !mt-0">{post.title}</h1>
+              <div className="text-sm text-muted-foreground mb-8">
+                {format(new Date(post.date), 'MMMM d, yyyy')} • {post.readTime}
+              </div>
+
+              <div 
+                className="leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            </div>
           </motion.div>
         </div>
-      </div>
+      </article>
     </>
   );
 }
