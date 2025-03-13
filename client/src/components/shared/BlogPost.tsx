@@ -13,11 +13,23 @@ export function BlogPost({ content, coverImage, title }: BlogPostProps) {
   useEffect(() => {
     if (!contentRef.current) return;
 
-    // Add lazy loading to all images in blog content
+    // Optimize images in blog content
     const images = contentRef.current.querySelectorAll('img');
     images.forEach(img => {
+      // Add loading="lazy" for images below the fold
       img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
+
+      // Use native lazy loading with fallback
+      if ('loading' in HTMLImageElement.prototype) {
+        img.setAttribute('loading', 'lazy');
+      }
+
+      // Set explicit dimensions if available
+      if (img.width && img.height) {
+        img.setAttribute('width', img.width.toString());
+        img.setAttribute('height', img.height.toString());
+      }
     });
   }, [content]);
 
