@@ -42,7 +42,6 @@ export const TEAM_MEMBERS = [
   }
 ];
 
-// Sample blog posts - this would typically be loaded from a CMS or markdown files
 export const BLOG_POSTS = [
   {
     slug: "maximizing-lp-returns-with-algorithmic-management",
@@ -50,7 +49,22 @@ export const BLOG_POSTS = [
     excerpt: "Deep dive into how algorithmic liquidity management can significantly improve your LP returns while reducing risks and manual oversight.",
     date: "2024-03-13",
     readTime: "8 min read",
+    image: "/blog/algorithmic-lp-management.webp",
+    tags: ["DeFi", "Liquidity Management", "Automation", "Trading"],
     content: `
+      <h2>Understanding Algorithmic Liquidity Management</h2>
+      <p>In the rapidly evolving DeFi landscape, successful liquidity provision requires more than just depositing tokens and hoping for the best. Modern LP strategies leverage algorithmic management to optimize positions in real-time, maximizing returns while minimizing risks.</p>
+
+      <h3>The Challenge of Manual LP Management</h3>
+      <p>Traditional liquidity provision faces several key challenges:</p>
+      <ul>
+        <li>Constant market monitoring requirement</li>
+        <li>Complex rebalancing decisions</li>
+        <li>Impermanent loss risk</li>
+        <li>Inefficient capital utilization</li>
+        <li>Missed opportunities during market movements</li>
+      </ul>
+
       Understanding Algorithmic Liquidity Management
 
       In the rapidly evolving DeFi landscape, successful liquidity provision requires more than just depositing tokens and hoping for the best. Modern LP strategies leverage algorithmic management to optimize positions in real-time, maximizing returns while minimizing risks.
@@ -120,7 +134,12 @@ export const BLOG_POSTS = [
     excerpt: "Learn how to optimize your concentrated liquidity positions for maximum returns, including advanced range selection and rebalancing strategies.",
     date: "2024-03-12",
     readTime: "10 min read",
+    image: "/blog/concentrated-liquidity.webp",
+    tags: ["DeFi", "Concentrated Liquidity", "Strategy", "Optimization"],
     content: `
+      <h2>The Evolution of Liquidity Provision</h2>
+      <p>Concentrated liquidity represents a paradigm shift in how we think about market making and liquidity provision. Unlike traditional AMMs that spread liquidity across an infinite price range, concentrated liquidity allows providers to focus their capital where it matters most.</p>
+
       The Evolution of Liquidity Provision
 
       Concentrated liquidity represents a paradigm shift in how we think about market making and liquidity provision. Unlike traditional AMMs that spread liquidity across an infinite price range, concentrated liquidity allows providers to focus their capital where it matters most.

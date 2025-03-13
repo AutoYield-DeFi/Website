@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet";
@@ -12,6 +14,7 @@ export default function Blog() {
         <meta name="description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
         <meta property="og:title" content="AutoYield Blog - DeFi Liquidity Management Insights" />
         <meta property="og:description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
       <div className="container mx-auto px-4 py-24">
@@ -28,7 +31,7 @@ export default function Blog() {
         </motion.div>
 
         <motion.div 
-          className="max-w-2xl mx-auto space-y-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -39,21 +42,40 @@ export default function Blog() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="block p-6 rounded-lg hover:bg-accent/5 transition-colors"
+                className="group cursor-pointer"
               >
-                <div className="mb-2 text-sm text-muted-foreground">
-                  <time dateTime={post.date}>
-                    {format(new Date(post.date), 'MMMM d, yyyy')}
-                  </time>
-                  <span className="mx-2">•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h2 className="text-2xl font-bold mb-3 leading-tight text-foreground hover:text-primary transition-colors">
-                  {post.title}
-                </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  {post.excerpt}
-                </p>
+                <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="flex gap-2 flex-wrap mb-4">
+                      {post.tags.map(tag => (
+                        <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="mb-3 text-sm text-muted-foreground">
+                      <time dateTime={post.date}>
+                        {format(new Date(post.date), 'MMMM d, yyyy')}
+                      </time>
+                      <span className="mx-2">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-muted-foreground line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </CardContent>
+                </Card>
               </motion.article>
             </Link>
           ))}
