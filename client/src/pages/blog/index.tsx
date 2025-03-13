@@ -2,19 +2,39 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import { BLOG_POSTS } from "@/lib/constants";
+import { useCallback, useMemo } from "react";
 
 export default function Blog() {
+  const [location, setLocation] = useLocation();
+  const searchParams = new URLSearchParams(window.location.search);
+  const activeTag = searchParams.get('tag');
+
+  const filteredPosts = useMemo(() => {
+    if (!activeTag) return BLOG_POSTS;
+    return BLOG_POSTS.filter(post => post.tags.includes(activeTag));
+  }, [activeTag]);
+
+  const handleTagClick = useCallback((tag: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tag') === tag) {
+      params.delete('tag');
+    } else {
+      params.set('tag', tag);
+    }
+    setLocation(`/blog?${params.toString()}`);
+  }, [setLocation]);
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>AutoYield Blog - DeFi Liquidity Management Insights</title>
-        <meta name="description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
-        <meta property="og:title" content="AutoYield Blog - DeFi Liquidity Management Insights" />
-        <meta property="og:description" content="Expert insights into DeFi liquidity provision, algorithmic trading strategies, and maximizing LP returns on Solana." />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{activeTag ? `${activeTag} Articles - AutoYield Blog` : 'AutoYield Blog - DeFi Liquidity Management Insights'}</title>
+        <meta name="description" content={`Expert insights into ${activeTag || 'DeFi liquidity provision'}, algorithmic trading strategies, and maximizing LP returns on Solana.`} />
+        <meta name="keywords" content="DeFi, Liquidity Management, Solana, Automated Trading, Yield Optimization" />
+        <link rel="canonical" href={`https://autoyield.fi/blog${activeTag ? `?tag=${activeTag}` : ''}`} />
       </Helmet>
 
       <div className="container mx-auto px-4 py-24">
@@ -24,7 +44,9 @@ export default function Blog() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Latest Articles</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            {activeTag ? `${activeTag} Articles` : 'Latest Articles'}
+          </h1>
           <p className="text-lg text-muted-foreground">
             Expert insights into DeFi liquidity management and yield optimization
           </p>
@@ -36,7 +58,7 @@ export default function Blog() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {BLOG_POSTS.map((post, index) => (
+          {filteredPosts.map((post, index) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
@@ -53,7 +75,14 @@ export default function Blog() {
                   <CardContent className="p-6">
                     <div className="flex gap-2 flex-wrap mb-4">
                       {post.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                        <Badge 
+                          key={tag} 
+                          variant="secondary" 
+                          className={`cursor-pointer ${
+                            activeTag === tag ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'
+                          } hover:bg-primary/20`}
+                          onClick={(e) => handleTagClick(tag, e)}
+                        >
                           {tag}
                         </Badge>
                       ))}

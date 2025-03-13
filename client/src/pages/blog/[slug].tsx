@@ -1,15 +1,20 @@
-import { useRoute } from "wouter";
+import { useRoute, Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "wouter";
-import { Helmet } from "react-helmet";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { BLOG_POSTS } from "@/lib/constants";
+import { Helmet } from "react-helmet";
 
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
+  const [, setLocation] = useLocation();
   const post = BLOG_POSTS.find(p => p.slug === params?.slug);
+
+  const handleTagClick = (tag: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setLocation(`/blog?tag=${tag}`);
+  };
 
   if (!post) {
     return (
@@ -34,8 +39,23 @@ export default function BlogPost() {
       <Helmet>
         <title>{post.title} - AutoYield Blog</title>
         <meta name="description" content={post.excerpt} />
-        <meta property="og:title" content={`${post.title} - AutoYield Blog`} />
+        <meta name="keywords" content={post.tags.join(', ')} />
+        <link rel="canonical" href={`https://autoyield.fi/blog/${post.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:tag" content={post.tags.join(',')} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt,
+            "datePublished": post.date,
+            "keywords": post.tags.join(',')
+          })}
+        </script>
       </Helmet>
 
       <article className="max-w-[44rem] mx-auto px-4 py-24">
@@ -49,7 +69,12 @@ export default function BlogPost() {
 
           <div className="flex gap-2 flex-wrap mb-6">
             {post.tags.map(tag => (
-              <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary">
+              <Badge 
+                key={tag} 
+                variant="secondary" 
+                className="cursor-pointer bg-primary/10 text-primary hover:bg-primary/20"
+                onClick={(e) => handleTagClick(tag, e)}
+              >
                 {tag}
               </Badge>
             ))}
