@@ -36,11 +36,6 @@ export default function BlogPost() {
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={`${post.title} - AutoYield Blog`} />
         <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${post.title} - AutoYield Blog`} />
-        <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:image" content={post.image} />
       </Helmet>
 
       <article className="max-w-[44rem] mx-auto px-4 py-24">
@@ -83,16 +78,17 @@ export default function BlogPost() {
           </motion.div>
 
           <motion.div
-            className="aspect-video w-full rounded-lg overflow-hidden mb-12"
+            className="aspect-video w-full rounded-lg overflow-hidden mb-12 bg-accent/50 flex items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <img 
-              src={post.image}
-              alt={post.title}
-              className="w-full h-full object-cover"
-            />
+            {post.icon && (
+              <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-primary/20">
+                <post.icon className="w-24 h-24 text-primary opacity-50" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#9333ea,#06b6d4)] opacity-10" />
+              </div>
+            )}
           </motion.div>
         </header>
 
@@ -102,7 +98,13 @@ export default function BlogPost() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div 
+            className="[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mt-12 [&>h2]:mb-4 
+                     [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-8 [&>h3]:mb-3
+                     [&>p]:mb-6 [&>p]:leading-7
+                     [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li]:mb-2"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </motion.div>
       </article>
     </div>
