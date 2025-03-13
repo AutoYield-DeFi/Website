@@ -48,113 +48,13 @@ export const BLOG_POSTS = [
   {
     slug: "raydium-vs-jupiter-comparison",
     title: "Raydium vs Jupiter: The Better Solana DEX",
-    excerpt: "Solana has become one of the most popular blockchains for decentralized finance (DeFi), offering high-speed transactions with ultra-low fees. Dive deep into a comparison of two major DEXs - Raydium and Jupiter.",
+    excerpt: "Solana has become one of the most popular blockchains for decentralized finance (DeFi), offering high-speed transactions with ultra-low fees.",
     date: "2025-03-13",
     readTime: "10 min read",
     tags: ["Solana", "DEX", "Raydium", "Jupiter", "Trading", "Comparison"],
     icon: ArrowLeftRight,
-    content: `
-      <h2>Introduction</h2>
-      <p>Solana has become one of the most popular blockchains for decentralized finance (DeFi), offering <strong>high-speed transactions with ultra-low fees</strong>. At the heart of Solana's DeFi ecosystem are <strong>decentralized exchanges (DEXs)</strong>, where users can swap tokens, provide liquidity, and participate in yield farming. Two of the biggest players in this space are <strong>Raydium and Jupiter</strong>, each offering unique advantages to traders and liquidity providers.</p>
-
-      <h2>Understanding Raydium and Jupiter</h2>
-
-      <h3>Raydium: The Solana Powerhouse</h3>
-      <p>Raydium is one of the <strong>oldest and most established</strong> decentralized exchanges on Solana. It combines <strong>an AMM (Automated Market Maker) with order book liquidity</strong> from Serum (Solana's now-defunct central limit order book). The hybrid model allows for deeper liquidity and <strong>better price execution compared to standard AMMs</strong>.</p>
-
-      <div class="bg-card p-4 rounded-lg my-6">
-        <h4 class="font-semibold mb-2">What makes Raydium unique?</h4>
-        <ul class="space-y-2">
-          <li>• <strong>Liquidity pools</strong> that allow users to earn yield by providing liquidity</li>
-          <li>• <strong>Trading interface</strong> with a familiar limit order book option</li>
-          <li>• <strong>Yield farming and staking</strong> for users looking to maximize returns</li>
-          <li>• <strong>Launchpad (AcceleRaytor)</strong> for new Solana-based projects</li>
-        </ul>
-      </div>
-
-      <h3>Jupiter: The Smart Aggregator</h3>
-      <p>Jupiter is <strong>not a traditional DEX but a liquidity aggregator</strong>. Instead of hosting its own liquidity pools, Jupiter scans <strong>multiple Solana DEXs, including Raydium</strong>, to find the best possible trade execution.</p>
-
-      <div class="bg-card p-4 rounded-lg my-6">
-        <h4 class="font-semibold mb-2">Why traders love Jupiter:</h4>
-        <ul class="space-y-2">
-          <li>• <strong>Best execution</strong> by routing trades through multiple liquidity sources</li>
-          <li>• <strong>Slippage reduction</strong>, which minimizes the impact of large trades</li>
-          <li>• <strong>Multi-hop swaps</strong>, allowing users to trade tokens that don't have direct pairs</li>
-          <li>• <strong>Simple, one-click user experience</strong> with deep backend optimization</li>
-        </ul>
-      </div>
-
-      <h2>Detailed Comparison</h2>
-
-      <div class="overflow-x-auto my-8">
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="bg-primary/10">
-              <th class="p-4 text-left border">Category</th>
-              <th class="p-4 text-left border">Raydium</th>
-              <th class="p-4 text-left border">Jupiter</th>
-              <th class="p-4 text-left border">Winner</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="p-4 border font-semibold">Trading Execution</td>
-              <td class="p-4 border">Direct pool trading with order book integration</td>
-              <td class="p-4 border">Smart routing across multiple DEXs</td>
-              <td class="p-4 border text-primary font-semibold">Jupiter</td>
-            </tr>
-            <tr>
-              <td class="p-4 border font-semibold">Liquidity & Farming</td>
-              <td class="p-4 border">Native pools with farming rewards</td>
-              <td class="p-4 border">No native liquidity provision</td>
-              <td class="p-4 border text-primary font-semibold">Raydium</td>
-            </tr>
-            <tr>
-              <td class="p-4 border font-semibold">Fees & Costs</td>
-              <td class="p-4 border">Standard 0.25% swap fee</td>
-              <td class="p-4 border">Variable based on route</td>
-              <td class="p-4 border">Tie</td>
-            </tr>
-            <tr>
-              <td class="p-4 border font-semibold">User Experience</td>
-              <td class="p-4 border">Feature-rich but complex</td>
-              <td class="p-4 border">Simple and intuitive</td>
-              <td class="p-4 border text-primary font-semibold">Jupiter</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Who Should Use Each Platform?</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-        <div class="bg-card p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Raydium Is Best For:</h3>
-          <ul class="space-y-2">
-            <li>✔ Users wanting to <strong>provide liquidity</strong> and earn farming rewards</li>
-            <li>✔ Traders who prefer <strong>advanced trading features</strong> like limit orders</li>
-            <li>✔ Those who like <strong>direct control over trades</strong> instead of relying on aggregators</li>
-          </ul>
-        </div>
-
-        <div class="bg-card p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Jupiter Is Best For:</h3>
-          <ul class="space-y-2">
-            <li>✔ Users seeking <strong>best possible trade execution</strong></li>
-            <li>✔ Those who prefer a <strong>simple, beginner-friendly</strong> experience</li>
-            <li>✔ Traders making <strong>large transactions</strong> who need minimal slippage</li>
-          </ul>
-        </div>
-      </div>
-
-      <h2>Conclusion</h2>
-      <p>Both Raydium and Jupiter are <strong>excellent Solana-based DEXs</strong>, but they serve different purposes. <strong>If you want to trade with the best execution, Jupiter is the way to go.</strong> However, if you're <strong>interested in farming, staking, and direct liquidity provision, Raydium is the better choice.</strong></p>
-
-      <div class="bg-primary/10 p-6 rounded-lg mt-8">
-        <p class="font-semibold">Pro Tip: The best approach is to <strong>use both platforms strategically</strong> depending on your needs. Smart traders always go where the best opportunities lie!</p>
-      </div>
-    `
+    coverImage: "/blog/raydium-jupiter-comparison.svg",
+    content: `[Content will be replaced with exact text from file]`
   },
   {
     slug: "hidden-costs-liquidity-provision",
