@@ -101,8 +101,10 @@ export const BLOG_POSTS = [
     tags: ["DeFi", "Liquidity Mining", "Yield", "Strategy", "Earnings"],
     icon: Coins,
     content: `
+      <h2>How to Maximize Your Earnings as a Liquidity Provider in 2025</h2>
+
       <h2>Introduction</h2>
-      <p>Decentralized finance (DeFi) has revolutionized the way people earn passive income, and liquidity provision (LP) remains one of the most attractive ways to generate yield. However, with market conditions evolving rapidly and new liquidity models emerging, being an LP in 2025 requires more than just depositing your tokens and hoping for the best.</p>
+      <p>Decentralized finance (DeFi) has revolutionized the way people earn passive income, and liquidity provision (LP) remains one of the most attractive ways to generate yield. However, with market conditions evolving rapidly and new liquidity models emerging, being an LP in 2025 requires more than just depositing tokens and hoping for the best.</p>
 
       <h2>Understanding the Current Landscape</h2>
       <p>The DeFi ecosystem in 2025 is markedly different from its early days. Key developments include:</p>
