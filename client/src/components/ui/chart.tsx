@@ -1,7 +1,16 @@
 import * as React from "react"
-import * as RechartsPrimitive from "recharts"
-
+import { lazy, Suspense } from "react"
 import { cn } from "@/lib/utils"
+
+// Lazy load Recharts components
+const RechartsPrimitive = lazy(() => import("recharts"));
+
+// Lightweight loading placeholder for charts
+function ChartLoader() {
+  return (
+    <div className="animate-pulse w-full aspect-video bg-muted/20 rounded-lg" />
+  );
+}
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const
@@ -56,9 +65,11 @@ const ChartContainer = React.forwardRef<
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer>
-          {children}
-        </RechartsPrimitive.ResponsiveContainer>
+        <Suspense fallback={<ChartLoader />}>
+          <RechartsPrimitive.ResponsiveContainer>
+            {children}
+          </RechartsPrimitive.ResponsiveContainer>
+        </Suspense>
       </div>
     </ChartContext.Provider>
   )
