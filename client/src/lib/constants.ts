@@ -1,3 +1,5 @@
+import { Bot, Zap, LineChart, Shield, Coins, Clock } from "lucide-react";
+
 export const SOCIAL_LINKS = {
   twitter: "https://twitter.com/autoyield",
   discord: "https://discord.gg/autoyield",
@@ -49,8 +51,8 @@ export const BLOG_POSTS = [
     excerpt: "Deep dive into how algorithmic liquidity management can significantly improve your LP returns while reducing risks and manual oversight.",
     date: "2024-03-13",
     readTime: "8 min read",
-    image: "/blog/algorithmic-lp-management.webp",
     tags: ["DeFi", "Liquidity Management", "Automation", "Trading"],
+    icon: Bot,
     content: `
       <h2>Understanding Algorithmic Liquidity Management</h2>
       <p>In the rapidly evolving DeFi landscape, successful liquidity provision requires more than just depositing tokens and hoping for the best. Modern LP strategies leverage algorithmic management to optimize positions in real-time, maximizing returns while minimizing risks.</p>
@@ -134,8 +136,8 @@ export const BLOG_POSTS = [
     excerpt: "Learn how to optimize your concentrated liquidity positions for maximum returns, including advanced range selection and rebalancing strategies.",
     date: "2024-03-12",
     readTime: "10 min read",
-    image: "/blog/concentrated-liquidity.webp",
     tags: ["DeFi", "Concentrated Liquidity", "Strategy", "Optimization"],
+    icon: LineChart,
     content: `
       <h2>The Evolution of Liquidity Provision</h2>
       <p>Concentrated liquidity represents a paradigm shift in how we think about market making and liquidity provision. Unlike traditional AMMs that spread liquidity across an infinite price range, concentrated liquidity allows providers to focus their capital where it matters most.</p>
@@ -220,5 +222,45 @@ export const BLOG_POSTS = [
 
       Mastering concentrated liquidity requires understanding both the theoretical foundations and practical implementation details. By combining these advanced optimization techniques with automated management systems, LPs can achieve superior risk-adjusted returns while maintaining efficient capital utilization.
     `
+  },
+  {
+    slug: "real-time-yield-optimization",
+    title: "Real-time Yield Optimization in DeFi Markets",
+    excerpt: "Explore advanced techniques for maximizing yield through real-time market analysis and automated position adjustments.",
+    date: "2024-03-11",
+    readTime: "12 min read",
+    tags: ["Yield Optimization", "Market Analysis", "Automation"],
+    icon: Zap,
+    content: `<h2>Real-time Yield Optimization</h2><p>This is placeholder content for the real-time yield optimization blog post.  It would discuss advanced strategies for maximizing yield using real-time market data and automated adjustments.</p>`
+  },
+  {
+    slug: "risk-management-in-automated-lp",
+    title: "Risk Management Strategies for Automated LP Positions",
+    excerpt: "Comprehensive guide to managing risks in automated liquidity provision, from impermanent loss protection to position sizing.",
+    date: "2024-03-10",
+    readTime: "15 min read",
+    tags: ["Risk Management", "DeFi", "Security"],
+    icon: Shield,
+    content: `<h2>Risk Management in Automated LP</h2><p>This is placeholder content for the risk management blog post. It would cover strategies for mitigating risks, such as impermanent loss, in automated liquidity provision scenarios.</p>`
+  },
+  {
+    slug: "advanced-fee-generation-strategies",
+    title: "Advanced Fee Generation Strategies in DeFi",
+    excerpt: "Detailed analysis of various fee generation strategies and how to optimize them for maximum returns.",
+    date: "2024-03-09",
+    readTime: "9 min read",
+    tags: ["Fees", "Strategy", "Optimization"],
+    icon: Coins,
+    content: `<h2>Advanced Fee Generation</h2><p>This is placeholder content for the advanced fee generation strategies blog post.  It would detail various strategies and how to optimize them for maximum returns.</p>`
+  },
+  {
+    slug: "automated-position-management",
+    title: "Automated Position Management: A Complete Guide",
+    excerpt: "Everything you need to know about automated position management in DeFi, from basic concepts to advanced strategies.",
+    date: "2024-03-08",
+    readTime: "11 min read",
+    tags: ["Automation", "Position Management", "DeFi"],
+    icon: Clock,
+    content: `<h2>Automated Position Management</h2><p>This is placeholder content for the automated position management guide.  It would cover everything from basic concepts to advanced strategies.</p>`
   }
 ];

@@ -31,7 +31,7 @@ export default function Blog() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -45,13 +45,10 @@ export default function Blog() {
                 className="group cursor-pointer"
               >
                 <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300">
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
+                  <div className="aspect-[16/9] overflow-hidden bg-accent/50">
+                    <div className="w-full h-full flex items-center justify-center">
+                      {post.icon && <post.icon className="w-12 h-12 text-primary opacity-50" />}
+                    </div>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex gap-2 flex-wrap mb-4">
