@@ -11,7 +11,8 @@ export const MENU_ITEMS = [
   { label: "Home", path: "/" },
   { label: "Features", path: "/features" },
   { label: "Documentation", path: "/docs" },
-  { label: "About", path: "/about" }
+  { label: "About", path: "/about" },
+  { label: "Legal", path: "/legal" }
 ];
 
 export const FOOTER_LINKS = [
@@ -493,7 +494,7 @@ export const BLOG_POSTS = [
       <h2>Introduction</h2>
       <p>Not long ago, Ethereum was the undisputed king of decentralized finance (DeFi). If you wanted to swap tokens, farm yield, or trade derivatives on-chain, <strong>Ethereum was the place to be</strong>. But over time, <strong>high gas fees and slow transactions</strong> made DeFi trading inefficient for many users. Traders needed something <strong>faster, cheaper, and just as secure</strong>—and that's when Solana stepped in.</p>
 
-      <p>Today, <strong>Solana has become the preferred blockchain for DeFi traders</strong>, offering unmatched speed, low costs, and an ever-growing ecosystem of decentralized exchanges (DEXs), lending platforms, and automated market makers (AMMs). But how did Solana rise to the top? And what makes it so attractive to traders? Let's break it down.</p>
+      <p>Today, <strong>Solana has become the preferred blockchain for DeFi traders</strong>, offering unmatched speed, low costs, and an ever-growing ecosystem of decentralized exchanges (DEXs), lending platforms, and automated market makers (AMMs). But how did Solana rise to the top? And what makes it so attractive to traders? Let'sbreak it down.</p>
 
       <h2>1. Why DeFi Traders Are Migrating to Solana</h2>
       <p>Traders move where the profits are, and <strong>Solana offers multiple advantages over other chains</strong> that make trading smoother and more profitable.</p>

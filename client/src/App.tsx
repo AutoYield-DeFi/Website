@@ -17,6 +17,7 @@ const BlogPost = lazy(() => import("@/pages/blog/[slug]"));
 const About = lazy(() => import("@/pages/about"));
 const Glossary = lazy(() => import("@/pages/glossary"));
 const DeFi101 = lazy(() => import("@/pages/defi101"));
+const Legal = lazy(() => import("@/pages/legal"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 // Loading fallback component with shimmer effect
@@ -67,7 +68,7 @@ function Router() {
               <Route path="/about" component={About} />
               <Route path="/glossary" component={Glossary} />
               <Route path="/defi101" component={DeFi101} />
-              {/* Temporarily removed Legal route */}
+              <Route path="/legal" component={Legal} />
               <Route component={NotFound} />
             </Switch>
           </ErrorBoundary>
