@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
 import App from "./App";
 import "./index.css";
 
@@ -23,11 +23,11 @@ function reportWebVitals(metric: any) {
 }
 
 // Initialize web vitals monitoring
-getCLS(reportWebVitals);
-getFID(reportWebVitals);
-getFCP(reportWebVitals);
-getLCP(reportWebVitals);
-getTTFB(reportWebVitals);
+onCLS(reportWebVitals);
+onFID(reportWebVitals);
+onFCP(reportWebVitals);
+onLCP(reportWebVitals);
+onTTFB(reportWebVitals);
 
 // Create React root and render app
 createRoot(document.getElementById("root")!).render(<App />);
