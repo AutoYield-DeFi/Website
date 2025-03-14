@@ -19,13 +19,33 @@ const DeFi101 = lazy(() => import("@/pages/defi101"));
 const Legal = lazy(() => import("@/pages/legal"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
-// Loading fallback component
+// Loading fallback component with shimmer effect
 function PageLoader() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="h-12 w-12 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-        <p className="text-muted-foreground">Loading...</p>
+        <div className="animate-pulse">
+          <div className="h-4 w-24 bg-muted rounded"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Error boundary fallback
+function ErrorFallback() {
+  return (
+    <div className="min-h-[70vh] flex items-center justify-center">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-2">Something went wrong</h2>
+        <p className="text-muted-foreground mb-4">Please try refreshing the page</p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+        >
+          Refresh Page
+        </button>
       </div>
     </div>
   );
@@ -36,7 +56,7 @@ function Router() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <Suspense fallback={<PageLoader />}>
+        <Suspense fallback={<PageLoader />} >
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/features" component={Features} />
