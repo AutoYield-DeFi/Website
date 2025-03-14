@@ -1,25 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
+import { storeMetric } from './lib/performance';
 import App from "./App";
 import "./index.css";
 
-// Report web vitals metrics
+// Report and store web vitals metrics
 function reportWebVitals(metric: any) {
-  // Log metrics to console in development
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(metric);
-  }
-
-  // In production, you could send to your analytics service
-  if (process.env.NODE_ENV === 'production') {
-    // Example: Send to your analytics endpoint
-    const analyticsData = {
-      name: metric.name,
-      value: metric.value,
-      id: metric.id,
-    };
-    console.log('Production metric:', analyticsData);
-  }
+  // Store and analyze the metric
+  storeMetric(metric);
 }
 
 // Initialize web vitals monitoring
