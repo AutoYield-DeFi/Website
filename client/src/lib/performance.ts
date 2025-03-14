@@ -16,15 +16,6 @@ export function storeMetric(metric: Metric) {
   }
 
   metrics[metric.name] = metric.value;
-
-  // Log formatted metrics in development only
-  if (process.env.NODE_ENV !== 'production') {
-    console.table({
-      'Metric Name': metric.name,
-      'Value': formatMetric(metric.value),
-      'Rating': metric.rating,
-    });
-  }
 }
 
 // Get current metrics
