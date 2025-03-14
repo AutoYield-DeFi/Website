@@ -5,7 +5,6 @@ import { AlertTriangle, Shield, Eye, Scale } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 
-// Update the ErrorFallback component with proper TypeScript types
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
@@ -14,7 +13,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
         <p className="text-muted-foreground mb-4">{error.message}</p>
         <button 
           onClick={resetErrorBoundary}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
         >
           Try again
         </button>

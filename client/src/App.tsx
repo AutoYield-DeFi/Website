@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { Seo } from "@/components/shared/Seo";
+import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
@@ -34,15 +35,15 @@ function PageLoader() {
 }
 
 // Error boundary fallback
-function ErrorFallback() {
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-2">Something went wrong</h2>
-        <p className="text-muted-foreground mb-4">Please try refreshing the page</p>
+        <p className="text-muted-foreground mb-4">{error.message}</p>
         <button 
-          onClick={() => window.location.reload()}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+          onClick={resetErrorBoundary}
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
         >
           Refresh Page
         </button>
@@ -57,18 +58,20 @@ function Router() {
       <Navbar />
       <main>
         <Suspense fallback={<PageLoader />} >
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/features" component={Features} />
-            <Route path="/docs" component={Docs} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/blog/:slug" component={BlogPost} />
-            <Route path="/about" component={About} />
-            <Route path="/glossary" component={Glossary} />
-            <Route path="/defi101" component={DeFi101} />
-            <Route path="/legal" component={Legal} />
-            <Route component={NotFound} />
-          </Switch>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/features" component={Features} />
+              <Route path="/docs" component={Docs} />
+              <Route path="/blog" component={Blog} />
+              <Route path="/blog/:slug" component={BlogPost} />
+              <Route path="/about" component={About} />
+              <Route path="/glossary" component={Glossary} />
+              <Route path="/defi101" component={DeFi101} />
+              <Route path="/legal" component={Legal} />
+              <Route component={NotFound} />
+            </Switch>
+          </ErrorBoundary>
         </Suspense>
       </main>
       <Footer />
@@ -78,11 +81,13 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Seo />
-      <Router />
-      <Toaster />
-    </QueryClientProvider>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <QueryClientProvider client={queryClient}>
+        <Seo />
+        <Router />
+        <Toaster />
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
