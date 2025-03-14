@@ -11,8 +11,7 @@ export const MENU_ITEMS = [
   { label: "Home", path: "/" },
   { label: "Features", path: "/features" },
   { label: "Documentation", path: "/docs" },
-  { label: "About", path: "/about" },
-  { label: "Legal", path: "/legal" }
+  { label: "About", path: "/about" }
 ];
 
 export const FOOTER_LINKS = [
