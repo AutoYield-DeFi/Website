@@ -3,10 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertTriangle, Shield, Eye, Scale } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { ErrorBoundary, type FallbackProps } from 'react-error-boundary';
 
 // Update the ErrorFallback component with proper TypeScript types
-import { FallbackProps } from 'react-error-boundary';
-
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
