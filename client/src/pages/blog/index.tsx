@@ -19,6 +19,7 @@ export default function Blog() {
 
   const handleTagClick = useCallback((tag: string, e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation(); // Stop event propagation to prevent navigation conflicts
     const params = new URLSearchParams(window.location.search);
     if (params.get('tag') === tag) {
       params.delete('tag');

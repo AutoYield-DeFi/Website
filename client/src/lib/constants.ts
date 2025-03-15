@@ -89,40 +89,40 @@ export const BLOG_POSTS = [
 
       <h2>Detailed Comparison</h2>
 
-      <div class="overflow-x-auto my-8">
+      <div class="overflow-x-auto my-8 rounded-lg border border-border">
         <table class="w-full border-collapse">
           <thead>
             <tr class="bg-primary/10">
-              <th class="p-4 text-left border">Category</th>
-              <th class="p-4 text-left border">Raydium</th>
-              <th class="p-4 text-left border">Jupiter</th>
-              <th class="p-4 text-left border">Winner</th>
+              <th class="p-4 text-left border border-border">Category</th>
+              <th class="p-4 text-left border border-border">Raydium</th>
+              <th class="p-4 text-left border border-border">Jupiter</th>
+              <th class="p-4 text-left border border-border">Winner</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="p-4 border font-semibold">Trading Execution</td>
-              <td class="p-4 border">Direct pool trading with order book integration</td>
-              <td class="p-4 border">Smart routing across multiple DEXs</td>
-              <td class="p-4 border text-primary font-semibold">Jupiter</td>
+              <td class="p-4 border border-border font-semibold">Trading Execution</td>
+              <td class="p-4 border border-border">Direct pool trading with order book integration</td>
+              <td class="p-4 border border-border">Smart routing across multiple DEXs</td>
+              <td class="p-4 border border-border text-primary font-semibold">Jupiter</td>
             </tr>
             <tr>
-              <td class="p-4 border font-semibold">Liquidity & Farming</td>
-              <td class="p-4 border">Native pools with farming rewards</td>
-              <td class="p-4 border">No native liquidity provision</td>
-              <td class="p-4 border text-primary font-semibold">Raydium</td>
+              <td class="p-4 border border-border font-semibold">Liquidity & Farming</td>
+              <td class="p-4 border border-border">Native pools with farming rewards</td>
+              <td class="p-4 border border-border">No native liquidity provision</td>
+              <td class="p-4 border border-border text-primary font-semibold">Raydium</td>
             </tr>
             <tr>
-              <td class="p-4 border font-semibold">Fees & Costs</td>
-              <td class="p-4 border">Standard 0.25% swap fee</td>
-              <td class="p-4 border">Variable based on route</td>
-              <td class="p-4 border">Tie</td>
+              <td class="p-4 border border-border font-semibold">Fees & Costs</td>
+              <td class="p-4 border border-border">Standard 0.25% swap fee</td>
+              <td class="p-4 border border-border">Variable based on route</td>
+              <td class="p-4 border border-border">Tie</td>
             </tr>
             <tr>
-              <td class="p-4 border font-semibold">User Experience</td>
-              <td class="p-4 border">Feature-rich but complex</td>
-              <td class="p-4 border">Simple and intuitive</td>
-              <td class="p-4 border text-primary font-semibold">Jupiter</td>
+              <td class="p-4 border border-border font-semibold">User Experience</td>
+              <td class="p-4 border border-border">Feature-rich but complex</td>
+              <td class="p-4 border border-border">Simple and intuitive</td>
+              <td class="p-4 border border-border text-primary font-semibold">Jupiter</td>
             </tr>
           </tbody>
         </table>

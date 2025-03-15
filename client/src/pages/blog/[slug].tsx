@@ -13,6 +13,7 @@ export default function BlogPost() {
 
   const handleTagClick = (tag: string, e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();  // Stop event propagation to prevent navigation conflicts
     setLocation(`/blog?tag=${tag}`);
   };
 
@@ -141,7 +142,7 @@ export default function BlogPost() {
         </header>
 
         <motion.div 
-          className="prose prose-lg prose-invert max-w-none"
+          className="prose prose-lg prose-invert max-w-none overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -150,7 +151,13 @@ export default function BlogPost() {
             className="[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mt-12 [&>h2]:mb-4 
                      [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-8 [&>h3]:mb-3
                      [&>p]:mb-6 [&>p]:leading-7
-                     [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li]:mb-2"
+                     [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li]:mb-2
+                     [&>table]:w-full [&>table]:border-collapse [&>table]:my-6
+                     [&_th]:p-3 [&_th]:text-left [&_th]:border [&_th]:border-border
+                     [&_td]:p-3 [&_td]:border [&_td]:border-border
+                     [&_pre]:overflow-x-auto [&_pre]:max-w-full
+                     [&_img]:max-w-full [&_img]:h-auto [&_img]:my-6
+                     [&_.overflow-x-auto]:max-w-full"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </motion.div>
