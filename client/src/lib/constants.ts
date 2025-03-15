@@ -54,6 +54,7 @@ export const BLOG_POSTS = [
     tags: ["Solana", "DEX", "Raydium", "Jupiter", "Trading", "Comparison"],
     icon: ArrowLeftRight,
     coverImage: "/blog/raydium-jupiter-comparison.svg",
+    imageSrc: "/blog/raydium-jupiter-comparison.svg",
     content: `
       <h2>Introduction</h2>
       <p>Solana has become one of the most popular blockchains for decentralized finance (DeFi), offering high-speed transactions with ultra-low fees. At the heart of Solana's DeFi ecosystem are decentralized exchanges (DEXs), where users can swap tokens, provide liquidity, and participate in yield farming. Two of the biggest players in this space are Raydium and Jupiter, each offering unique advantages to traders and liquidity providers.</p>
@@ -165,6 +166,7 @@ export const BLOG_POSTS = [
     readTime: "8 min read",
     tags: ["DeFi", "Liquidity Mining", "Risk Management", "Impermanent Loss", "Yield Optimization"],
     icon: Bot,
+    imageSrc: "/blog/d-fee.png",
     content: `
       <h2>Introduction</h2>
       <p>Liquidity provision in decentralized finance (DeFi) is often marketed as a passive income stream where users can "set and forget" their assets while collecting trading fees. The appeal is clear: deposit tokens, earn yield, and let the decentralized protocols do the heavy lifting. But the reality is <strong>far more complex</strong>.</p>
@@ -267,6 +269,7 @@ export const BLOG_POSTS = [
     readTime: "10 min read",
     tags: ["DeFi", "Liquidity Mining", "Yield", "Strategy", "Earnings"],
     icon: Coins,
+    imageSrc: "/blog/concentrated-liquidity.webp",
     content: `
       <h2>1. Choose the Right Liquidity Model</h2>
 
@@ -377,6 +380,7 @@ export const BLOG_POSTS = [
     readTime: "8 min read",
     tags: ["DeFi", "DLMM", "Liquidity", "Innovation", "Trading"],
     icon: Bot,
+    imageSrc: "/blog/dlmm-2.png",
     content: `
       <div class="my-8">
         <img src="/blog/dlmm-2.png" alt="DLMM Interface showing advanced liquidity management options" class="w-full rounded-lg shadow-lg" />
@@ -489,6 +493,7 @@ export const BLOG_POSTS = [
     tags: ["Solana", "DeFi", "Trading", "Blockchain", "Performance", "Gas Fees"],
     icon: Rocket,
     coverImage: "/blog/solana-defi-rise.svg",
+    imageSrc: "/blog/solana-defi-rise.svg",
     content: `
       <h2>Introduction</h2>
       <p>Not long ago, Ethereum was the undisputed king of decentralized finance (DeFi). If you wanted to swap tokens, farm yield, or trade derivatives on-chain, <strong>Ethereum was the place to be</strong>. But over time, <strong>high gas fees and slow transactions</strong> made DeFi trading inefficient for many users. Traders needed something <strong>faster, cheaper, and just as secure</strong>—and that's when Solana stepped in.</p>
