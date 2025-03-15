@@ -13,44 +13,60 @@ const app = express();
 // Enable request compression
 app.use(compression());
 
-// Security Middleware with custom CSP
+// Enhanced Security Middleware - Disable CSP in development to avoid Vite HMR issues
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https:"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https:"],
-        imgSrc: ["'self'", "data:", "https:", "blob:"],
-        connectSrc: ["'self'", "https:", "wss:", "ws:"],
-        fontSrc: ["'self'", "data:", "https:"],
-        objectSrc: ["'none'"],
-        mediaSrc: ["'self'"],
-        frameSrc: ["'self'"],
-        formAction: ["'self'"],
-        frameAncestors: ["'none'"],
-        baseUri: ["'self'"],
-        upgradeInsecureRequests: [],
-      },
-    },
-    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: process.env.NODE_ENV === 'production' 
+      ? {
+          directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "data:", "https://autoyield.io", "blob:"],
+            connectSrc: ["'self'", "https://solana.com", "https://*.autoyield.io"],
+            fontSrc: ["'self'", "data:"],
+            objectSrc: ["'none'"],
+            mediaSrc: ["'self'"],
+            manifestSrc: ["'self'"],
+            frameSrc: ["'self'"],
+            formAction: ["'self'"],
+            frameAncestors: ["'none'"],
+            baseUri: ["'self'"],
+            workerSrc: ["'self'", "blob:"],
+            childSrc: ["'self'", "blob:"],
+            upgradeInsecureRequests: [],
+          },
+        }
+      : false, // Disable CSP in development 
+    crossOriginEmbedderPolicy: process.env.NODE_ENV === 'production',
+    crossOriginOpenerPolicy: process.env.NODE_ENV === 'production' ? { policy: "same-origin" } : false,
     crossOriginResourcePolicy: { policy: "cross-origin" },
     hsts: {
-      maxAge: 31536000,
+      maxAge: 31536000, // 1 year in seconds
       includeSubDomains: true,
       preload: true
     },
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+    // Additional security headers
+    noSniff: true,
+    xssFilter: true,
+    ieNoOpen: true,
+    permittedCrossDomainPolicies: { permittedPolicies: "none" }
   })
 );
 
-// CORS configuration with stricter options
+// Enhanced CORS configuration with whitelist approach
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://yourdomain.com' : true,
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://autoyield.io', 'https://www.autoyield.io', 'https://app.autoyield.io']
+    : true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Content-Length', 'X-Rate-Limit'],
   credentials: true,
-  maxAge: 86400 // 24 hours
+  maxAge: 86400, // 24 hours
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
 
 // Data sanitization

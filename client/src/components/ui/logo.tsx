@@ -1,5 +1,6 @@
-import { Activity, TrendingUp, Bot } from "lucide-react";
+import { ArrowUpRight, BarChart3, Zap } from "lucide-react";
 import { Link } from "wouter";
+import { cn } from "@/lib/utils";
 
 interface LogoProps {
   variant?: "default" | "footer";
@@ -16,41 +17,46 @@ export function Logo({ variant = "default", className = "", showBeta = true }: L
 
   return (
     <Link href="/" onClick={handleLinkClick}>
-      <div className={`flex items-center space-x-2 cursor-pointer ${className}`}>
-        <div className="relative w-8 h-8 flex-shrink-0">
-          {/* Custom logo icon - stylized "AY" with automated/yield symbolism */}
-          <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-600 to-cyan-600 flex items-center justify-center overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center">
-              <TrendingUp className="h-3 w-3 text-white/90 transform translate-y-0.5" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 flex items-center justify-center">
-              <Activity className="h-3 w-3 text-white/90 transform -translate-y-0.5" />
-            </div>
-            <Bot className="h-4 w-4 text-white opacity-30 absolute" />
-            <div className="text-white font-bold text-xs flex items-center justify-center">
-              <span className="mr-px">A</span>
-              <span>Y</span>
-            </div>
+      <div className={cn("flex items-center gap-2 cursor-pointer", className)}>
+        {/* Modern logo mark with automation symbolism */}
+        <div className="relative flex-shrink-0">
+          <div className="flex items-center justify-center bg-primary/10 rounded-lg p-1.5 border border-primary/20">
+            <Zap 
+              className={cn(
+                "h-4 w-4 text-primary",
+                variant === "default" ? "animate-pulse" : ""
+              )} 
+              style={{ animationDuration: '2.5s' }} 
+            />
           </div>
-          {/* Animated dot */}
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full animate-pulse" />
         </div>
         
-        <div className="flex flex-col">
-          <div className="text-lg sm:text-xl font-bold leading-none">
-            <span className="bg-gradient-to-r from-purple-500 via-violet-500 to-cyan-500 bg-clip-text text-transparent">
-              Auto
-            </span>
-            <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">
-              Yield
-            </span>
+        {/* Logo text with improved typography */}
+        <div className="flex items-center">
+          <div className={cn(
+            "font-bold tracking-tight",
+            variant === "default" ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
+          )}>
+            <span className="text-primary font-extrabold">Auto</span>
+            <span className="text-foreground">Yield</span>
+            <span className="text-primary ml-0.5 font-extrabold">.</span>
           </div>
-          {variant === "default" && showBeta && (
-            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-500 border border-purple-500/20 self-start mt-0.5">
-              Beta
-            </span>
+          
+          {/* Dynamic indicator for the default variant */}
+          {variant === "default" && (
+            <div className="flex items-center ml-1">
+              <BarChart3 className="h-3.5 w-3.5 text-primary/70" />
+              <ArrowUpRight className="h-3 w-3 -ml-0.5 text-primary" />
+            </div>
           )}
         </div>
+        
+        {/* Redesigned Beta tag */}
+        {variant === "default" && showBeta && (
+          <span className="text-2xs font-semibold px-1.5 py-0.5 rounded-md bg-primary/15 text-primary border border-primary/25 self-start uppercase tracking-wider">
+            Beta
+          </span>
+        )}
       </div>
     </Link>
   );

@@ -11,6 +11,9 @@ interface ResponsiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement>
   className?: string;
   containerClassName?: string;
   priority?: boolean;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 export function ResponsiveImage({
@@ -23,6 +26,9 @@ export function ResponsiveImage({
   className,
   containerClassName,
   priority = false,
+  loading,
+  decoding,
+  fetchPriority,
   ...props
 }: ResponsiveImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
@@ -58,8 +64,9 @@ export function ResponsiveImage({
         width={width}
         height={height}
         sizes={sizes}
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
+        loading={loading || (priority ? "eager" : "lazy")}
+        decoding={decoding || (priority ? "sync" : "async")}
+        fetchPriority={fetchPriority || (priority ? "high" : "auto")}
         onLoad={() => setIsLoaded(true)}
         onError={handleError}
         className={cn(
