@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Helmet } from "react-helmet";
 import { BLOG_POSTS } from "@/lib/constants";
 import { useCallback, useMemo } from "react";
@@ -71,7 +71,7 @@ export default function Blog() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {filteredPosts.map((post, index) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
+            <a key={post.slug} href={`/blog/${post.slug}`} className="no-underline">
               <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function Blog() {
                   </CardContent>
                 </Card>
               </motion.article>
-            </Link>
+            </a>
           ))}
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-import { useRoute, Link, useLocation } from "wouter";
+import { useRoute, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
@@ -27,12 +27,10 @@ export default function BlogPost() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Post not found</h1>
-            <Link href="/blog">
-              <div className="text-primary hover:text-primary/80 cursor-pointer inline-flex items-center">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Blog
-              </div>
-            </Link>
+            <a href="/blog" className="text-primary hover:text-primary/80 cursor-pointer inline-flex items-center">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </a>
           </div>
         </div>
       </div>
@@ -70,12 +68,10 @@ export default function BlogPost() {
 
       <article className="max-w-[44rem] mx-auto px-4 py-24 overflow-hidden">
         <header className="mb-12">
-          <Link href="/blog">
-            <div className="text-primary hover:text-primary/80 cursor-pointer inline-flex items-center mb-8">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Blog
-            </div>
-          </Link>
+          <a href="/blog" className="text-primary hover:text-primary/80 cursor-pointer inline-flex items-center mb-8">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Blog
+          </a>
 
           <div className="flex gap-2 flex-wrap mb-6">
             {post.tags.map(tag => (
