@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 import { FaTwitter, FaDiscord, FaTelegram, FaGithub } from "react-icons/fa";
+import { Logo } from "@/components/ui/logo";
 
 export default function Footer() {
   const handleLinkClick = () => {
@@ -25,23 +26,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
           <div>
-            <Link href="/" onClick={handleLinkClick}>
-              <div className="cursor-pointer">
-                <div className="relative inline-block">
-                  <div className="text-2xl font-bold">
-                    <span className="bg-gradient-to-r from-purple-500 via-violet-500 to-cyan-500 bg-clip-text text-transparent">
-                      Auto
-                    </span>
-                    <span className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-transparent">
-                      Yield
-                    </span>
-                  </div>
-                  <div className="absolute -top-1 -right-2 w-2 h-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full animate-pulse" />
-                </div>
-              </div>
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Sophisticated DeFi liquidity management with AI-driven optimization on Solana
+            <Logo variant="footer" />
+            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+              Maximizing your DeFi returns with automated liquidity management that works while you sleep. No manual monitoring, no missed opportunities.
             </p>
           </div>
 
