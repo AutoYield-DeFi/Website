@@ -103,17 +103,35 @@ export default function BlogPost() {
           </motion.div>
 
           <motion.div
-            className="aspect-video w-full rounded-lg overflow-hidden mb-12 bg-accent/50 flex items-center justify-center"
+            className="w-full rounded-lg overflow-hidden mb-12 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ maxHeight: '500px' }}
           >
-            {post.icon && (
-              <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-primary/20">
-                <post.icon className="w-24 h-24 text-primary opacity-50" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#9333ea,#06b6d4)] opacity-10" />
+            {post.imageSrc ? (
+              <img 
+                src={post.imageSrc} 
+                alt={post.title}
+                className="w-full h-full object-cover"
+                style={{ aspectRatio: '16/9', objectFit: 'cover', maxHeight: '500px' }}
+              />
+            ) : (
+              <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30" style={{ aspectRatio: '16/9', maxHeight: '500px' }}>
+                {post.icon && (
+                  <>
+                    <div className="relative z-10">
+                      <div className="absolute inset-0 blur-[80px] bg-primary/20 rounded-full" style={{ width: '240px', height: '240px', transform: 'translate(-50%, -50%)', left: '50%', top: '50%' }}></div>
+                      <post.icon className="w-32 h-32 text-primary relative z-10" />
+                    </div>
+                    <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl"></div>
+                    <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 rounded-full filter blur-2xl"></div>
+                  </>
+                )}
               </div>
             )}
+            {/* Overlay gradient for both images and icons */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-background/80 opacity-70"></div>
           </motion.div>
         </header>
 

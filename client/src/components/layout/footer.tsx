@@ -57,85 +57,11 @@ export default function Footer() {
   const legalLinks = [
     { path: "/about", label: "About Us" },
     { path: "/legal", label: "Terms of Service" },
-    { path: "/legal", label: "Privacy Policy" },
   ];
 
   return (
     <footer className="bg-gradient-to-b from-background/80 to-muted/30 mt-16 border-t">
       <div className="container mx-auto px-4 py-8 md:py-12">
-        {/* Sign up section */}
-        <div className="relative mb-12 overflow-hidden">
-          <div className="absolute inset-0 bg-primary/5 rounded-xl"></div>
-          <div className="absolute right-0 bottom-0 opacity-10 w-64 h-64">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="fill-primary">
-              <path d="M50,5 Q95,5 95,50 Q95,95 50,95 Q5,95 5,50 Q5,5 50,5 Z" />
-            </svg>
-          </div>
-          
-          <div className="relative p-6 md:p-8 rounded-xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold tracking-tight mb-4">Stay ahead in DeFi</h3>
-                <p className="text-muted-foreground mb-6">
-                  Join our newsletter for the latest strategies, market insights, and AutoYield platform updates.
-                </p>
-                
-                <div className="space-y-3">
-                  {benefits.map((benefit, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <Zap className="h-4 w-4 text-primary flex-shrink-0" />
-                      <span className="text-sm">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                {isSubmitted ? (
-                  <div className="bg-primary/10 rounded-lg p-6 text-center">
-                    <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <h4 className="font-medium text-lg mb-2">Thank you for subscribing!</h4>
-                    <p className="text-muted-foreground text-sm">
-                      You'll start receiving AutoYield updates and DeFi strategies in your inbox.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleEmailSubmit} className="space-y-4">
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email address
-                      </label>
-                      <div className="flex gap-2">
-                        <Input
-                          id="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          type="email"
-                          placeholder="you@example.com"
-                          className="flex-1"
-                          required
-                        />
-                        <Button type="submit" disabled={isSubmitting}>
-                          {isSubmitting ? (
-                            <div className="h-4 w-4 border-2 border-background border-t-transparent rounded-full animate-spin" />
-                          ) : (
-                            <>
-                              Subscribe
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </>
-                          )}
-                        </Button>
-                      </div>
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      We respect your privacy. Unsubscribe at any time.
-                    </p>
-                  </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}

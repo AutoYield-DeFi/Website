@@ -67,10 +67,25 @@ export default function Blog() {
                 className="group cursor-pointer"
               >
                 <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300">
-                  <div className="aspect-[16/9] overflow-hidden bg-accent/50">
-                    <div className="w-full h-full flex items-center justify-center">
-                      {post.icon && <post.icon className="w-12 h-12 text-primary opacity-50" />}
-                    </div>
+                  <div className="aspect-[16/9] overflow-hidden rounded-t-md relative">
+                    {post.imageSrc ? (
+                      <img 
+                        src={post.imageSrc} 
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/30">
+                        {post.icon && (
+                          <div className="relative">
+                            <div className="absolute inset-0 blur-xl bg-primary/20 rounded-full"></div>
+                            <post.icon className="w-12 h-12 text-primary relative z-10" />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70"></div>
                   </div>
                   <CardContent className="p-6">
                     <div className="flex gap-2 flex-wrap mb-4">

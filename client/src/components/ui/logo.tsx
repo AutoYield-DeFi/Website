@@ -51,9 +51,9 @@ export function Logo({ variant = "default", className = "", showBeta = true }: L
           )}
         </div>
         
-        {/* Redesigned Beta tag */}
+        {/* Subtle Beta tag */}
         {variant === "default" && showBeta && (
-          <span className="text-2xs font-semibold px-1.5 py-0.5 rounded-md bg-primary/15 text-primary border border-primary/25 self-start uppercase tracking-wider">
+          <span className="text-[9px] font-medium px-1 py-0.5 rounded bg-primary/5 text-primary/70 self-start uppercase tracking-wider">
             Beta
           </span>
         )}
