@@ -11,10 +11,14 @@ export default function BlogPost() {
   const [, setLocation] = useLocation();
   const post = BLOG_POSTS.find(p => p.slug === params?.slug);
 
+  // Handle tag click more explicitly to make sure it works
   const handleTagClick = (tag: string, e: React.MouseEvent) => {
+    // Prevent the default behavior
     e.preventDefault();
-    e.stopPropagation();  // Stop event propagation to prevent navigation conflicts
-    setLocation(`/blog?tag=${tag}`);
+    // Stop event from bubbling up and triggering other event handlers
+    e.stopPropagation();
+    // Explicitly navigate using location
+    window.location.href = `/blog?tag=${tag}`;
   };
 
   if (!post) {
@@ -36,8 +40,8 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <div className="absolute inset-0 z-0">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-[10%] left-[-5%] w-64 h-64 bg-primary/10 rounded-full filter blur-2xl"></div>
       </div>
@@ -64,7 +68,7 @@ export default function BlogPost() {
         </script>
       </Helmet>
 
-      <article className="max-w-[44rem] mx-auto px-4 py-24">
+      <article className="max-w-[44rem] mx-auto px-4 py-24 overflow-hidden">
         <header className="mb-12">
           <Link href="/blog">
             <div className="text-primary hover:text-primary/80 cursor-pointer inline-flex items-center mb-8">

@@ -17,21 +17,27 @@ export default function Blog() {
     return BLOG_POSTS.filter(post => post.tags.includes(activeTag));
   }, [activeTag]);
 
+  // Handle tag click more explicitly to ensure it works
   const handleTagClick = useCallback((tag: string, e: React.MouseEvent) => {
+    // Prevent the default behavior and stop propagation
     e.preventDefault();
-    e.stopPropagation(); // Stop event propagation to prevent navigation conflicts
+    e.stopPropagation(); 
+    
+    // Toggle tag filter using direct navigation
     const params = new URLSearchParams(window.location.search);
     if (params.get('tag') === tag) {
       params.delete('tag');
     } else {
       params.set('tag', tag);
     }
-    setLocation(`/blog?${params.toString()}`);
-  }, [setLocation]);
+    
+    // Use direct window location for more reliable navigation
+    window.location.href = `/blog?${params.toString()}`;
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <div className="absolute inset-0 z-0">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-[10%] left-[-5%] w-64 h-64 bg-primary/10 rounded-full filter blur-2xl"></div>
       </div>
