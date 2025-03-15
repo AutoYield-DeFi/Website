@@ -35,7 +35,12 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-[10%] left-[-5%] w-64 h-64 bg-primary/10 rounded-full filter blur-2xl"></div>
+      </div>
+      
       <Helmet>
         <title>{post.title} - AutoYield Blog</title>
         <meta name="description" content={post.excerpt} />
@@ -81,7 +86,7 @@ export default function BlogPost() {
           </div>
 
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+            className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -113,7 +118,7 @@ export default function BlogPost() {
               <img 
                 src={post.imageSrc} 
                 alt={post.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-lg"
                 style={{ aspectRatio: '16/9', objectFit: 'cover', maxHeight: '500px' }}
               />
             ) : (

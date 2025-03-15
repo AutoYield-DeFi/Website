@@ -29,7 +29,12 @@ export default function Blog() {
   }, [setLocation]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-[10%] left-[-5%] w-64 h-64 bg-primary/10 rounded-full filter blur-2xl"></div>
+      </div>
+      
       <Helmet>
         <title>{activeTag ? `${activeTag} Articles - AutoYield Blog` : 'AutoYield Blog - DeFi Liquidity Management Insights'}</title>
         <meta name="description" content={`Expert insights into ${activeTag || 'DeFi liquidity provision'}, algorithmic trading strategies, and maximizing LP returns on Solana.`} />
@@ -44,7 +49,7 @@ export default function Blog() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             {activeTag ? `${activeTag} Articles` : 'Latest Articles'}
           </h1>
           <p className="text-lg text-muted-foreground">
@@ -66,7 +71,7 @@ export default function Blog() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group cursor-pointer"
               >
-                <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-colors duration-300">
+                <Card className="h-full overflow-hidden border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.15)] bg-background/50 backdrop-blur-sm">
                   <div className="aspect-[16/9] overflow-hidden rounded-t-md relative">
                     {post.imageSrc ? (
                       <img 

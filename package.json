@@ -48,6 +48,7 @@
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
     "@types/hpp": "^0.2.6",
+    "@types/react-helmet": "^6.1.11",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
