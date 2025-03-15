@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from "react-helmet-async";
+import { Seo } from "@/components/shared/Seo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 
@@ -8,11 +8,11 @@ function Legal() {
 
   return (
     <div className="min-h-screen bg-background pt-24 pb-16">
-      <Helmet>
-        <title>Legal Information - AutoYield</title>
-        <meta name="description" content="Terms of Service, Privacy Policy, and Risk Disclosures for AutoYield" />
-        <meta name="robots" content="noindex,nofollow" />
-      </Helmet>
+      <Seo 
+        title="Legal Information - AutoYield"
+        description="Terms of Service, Privacy Policy, and Risk Disclosures for AutoYield"
+        noIndex={true}
+      />
       
       <div className="container mx-auto px-4">
         <motion.div
