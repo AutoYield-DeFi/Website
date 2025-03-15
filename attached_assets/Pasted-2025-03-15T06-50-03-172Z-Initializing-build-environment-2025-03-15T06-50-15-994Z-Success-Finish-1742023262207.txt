@@ -1,0 +1,43 @@
+2025-03-15T06:50:03.172Z	Initializing build environment...
+2025-03-15T06:50:15.994Z	Success: Finished initializing build environment
+2025-03-15T06:50:16.127Z	Cloning repository...
+2025-03-15T06:50:16.549Z	Detected the following tools from environment: npm@10.8.3, nodejs@22.9.0
+2025-03-15T06:50:16.550Z	Installing project dependencies: npm clean-install --progress=false
+2025-03-15T06:50:19.291Z	npm warn deprecated xss-clean@0.1.4: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+2025-03-15T06:50:19.608Z	npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+2025-03-15T06:50:19.703Z	npm warn deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+2025-03-15T06:50:20.040Z	npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+2025-03-15T06:50:20.533Z	npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-03-15T06:50:22.049Z	npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+2025-03-15T06:50:22.086Z	npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+2025-03-15T06:50:22.355Z	npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-03-15T06:50:22.507Z	npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-03-15T06:50:28.762Z	
+2025-03-15T06:50:28.763Z	added 960 packages, and audited 961 packages in 12s
+2025-03-15T06:50:28.764Z	
+2025-03-15T06:50:28.764Z	107 packages are looking for funding
+2025-03-15T06:50:28.764Z	  run `npm fund` for details
+2025-03-15T06:50:28.792Z	
+2025-03-15T06:50:28.792Z	37 vulnerabilities (9 moderate, 28 high)
+2025-03-15T06:50:28.793Z	
+2025-03-15T06:50:28.793Z	To address issues that do not require attention, run:
+2025-03-15T06:50:28.793Z	  npm audit fix
+2025-03-15T06:50:28.793Z	
+2025-03-15T06:50:28.793Z	To address all issues (including breaking changes), run:
+2025-03-15T06:50:28.793Z	  npm audit fix --force
+2025-03-15T06:50:28.793Z	
+2025-03-15T06:50:28.794Z	Run `npm audit` for details.
+2025-03-15T06:50:28.827Z	Executing user deploy command: npx wrangler deploy
+2025-03-15T06:50:29.837Z	npm warn exec The following package was not found and will be installed: wrangler@4.0.0
+2025-03-15T06:50:39.530Z	
+2025-03-15T06:50:39.530Z	 ⛅️ wrangler 4.0.0
+2025-03-15T06:50:39.530Z	------------------
+2025-03-15T06:50:39.531Z	
+2025-03-15T06:50:39.534Z	
+2025-03-15T06:50:39.588Z	✘ [ERROR] Missing entry-point: The entry-point should be specified via the command line (e.g. `wrangler deploy path/to/script`) or the `main` config field.
+2025-03-15T06:50:39.588Z	
+2025-03-15T06:50:39.588Z	
+2025-03-15T06:50:39.588Z	
+2025-03-15T06:50:39.588Z	Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+2025-03-15T06:50:39.613Z	🪵  Logs were written to "/opt/buildhome/.config/.wrangler/logs/wrangler-2025-03-15_06-50-39_148.log"
+2025-03-15T06:50:39.713Z	Failed: error occurred while running deploy command

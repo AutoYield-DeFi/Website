@@ -1,0 +1,7 @@
+name = "autoyield"
+main = "dist/index.js"
+compatibility_date = "2023-12-01"
+node_compat = true
+
+[site]
+bucket = "./dist"
